@@ -1,0 +1,123 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fefffb;
+}
+
+
+/* Стил додани диви аввали кофтукоб */
+.container{
+    max-width: 650px;
+    margin: 5px auto;
+    box-shadow: 1px 1px 10px black;
+}
+
+.searchDiv{
+    padding: 20px 10px;
+    text-align: center;
+    background: rgb(229, 243, 241);
+}
+
+
+.searchDiv h1{
+    margin: 5px;
+    font-size: 45px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.searchDiv p{
+    margin: 5px 5px 10px 5px;
+    font-size: 22px;
+    color: teal;
+}
+
+.searchDiv input{
+    height: 45px;
+    font-size: 23px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 340px;
+}
+
+
+/* Стайл додани диви номхои китобхо */
+#books-list{
+    width: 100%;
+    background: linear-gradient(70deg, rgb(245, 253, 255), rgb(243, 242, 242))
+}
+
+#books-list h2{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10px;
+    color: teal;
+}
+#books-list ul{
+    list-style: none;
+    padding: 20px;
+}
+
+#books-list ul li{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin: 10px 3px ;  
+  padding: 13px;
+  font-size: 20px;
+  background: white;
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 10px gray solid;
+
+}
+#books-list ul li:hover{
+    transition: 0.4s;
+    border-left-color: rgb(211, 207, 201);
+}
+
+
+#books-list ul li .delete{
+    padding: 10px 10px;
+    background: rgb(0, 0, 0);
+    border-radius: 3px;
+    font-weight: 700;
+    color:rgb(252, 8, 8);
+    cursor: pointer;
+}
+
+#books-list ul li .delete:hover{
+    background: teal;
+    transition: 0.5s;
+    color: white;
+}
+
+
+.addDiv {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.addDiv input{
+    height: 42px;
+    width: 300px;
+    font-size: 22px;
+    border: 1.5px solid rebeccapurple;
+}
+
+.addDiv button{
+    height: 42px;
+    border: 2px solid rebeccapurple;
+    background: rgb(167, 0, 189);
+    color: wheat;
+    font-size: 22px;
+}
