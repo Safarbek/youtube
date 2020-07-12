@@ -1,82 +1,62 @@
-var btnDelete = document.getElementsByClassName("delete");
-var addBtn = document.querySelector('#add-book');
-var inputAdd = document.querySelector("#inputAdd");
-var searchInput = document.forms[0].elements[0];
-const nameBooke = document.querySelectorAll("li .name");
-const list = document.querySelector("#book-list ul");
 
+const list = document.querySelector("ul");
+const inputAdd = document.getElementById("inputAdd")
+const addBtn = document.getElementById("addBook")
+const seraInput = document.getElementsByTagName('input')[0];
 
-
-list.addEventListener("click", (e) => {
-    if(e.target.classList == "delete"){
-        const li = e.target.parentElement;
-        li.classList = 'test'
-        li.addEventListener("transitionend", () => {
-            li.parentElement.removeChild(li)
-        })
-       
+// Удалит кардани китобхо
+list.onclick = function(e) {
+    var del = e.target;
+    if(del.classList.contains('delete')){
+        var parent = del.parentElement;
+        
+        list.removeChild(parent);
     }
-})
+}
 
 
 
-//Listner for search input
+//Дохил кардани китоби нав
 
-searchInput.addEventListener("input", (e) => {
-    const term = e.target.value.toLowerCase();
-    const books = list.getElementsByTagName("li");
-   
-    Array.from(books).forEach(function(book) {
-        if(term != "") {
-        const title = book.firstElementChild.textContent;
+addBtn.onclick = function(){
+    if(inputAdd.value != '') {
+        var li = document.createElement("li");
+        var spanName  = document.createElement('span');
+        var spanDelete = document.createElement("span");
 
-        if(title.toLowerCase().indexOf(term) != -1) {
-            book.style.display = ''
-        } else {
-            book.style.display = 'none'
+        spanName.innerText = inputAdd.value;
+        spanDelete.innerText = "Удалить"
+        spanDelete.classList.add('delete')
+        li.appendChild(spanName)
+        li.appendChild(spanDelete)
+
+        list.appendChild(li);
+
+        inputAdd.value = '';
+        
+
+    } else{
+        var mes = document.getElementById("messege");
+        mes.innerText = "Шумо хеч чиз ворид накардед!";
+        setTimeout(()=> {mes.innerText = ''}, 3000);
+    }
+}
+
+
+//Чустучу кардани китобхо
+
+seraInput.addEventListener('keyup', function(){
+    var nomho = list.getElementsByTagName('li');
+    for (var i = 0; i < nomho.length; i++) {
+        var name = nomho[i].textContent.toLowerCase();
+        var serach = seraInput.value.toLowerCase();
+
+        if(name.indexOf(serach) != -1){
+            nomho[i].style.display = ''
+        } else{
+            nomho[i].style.display = 'none'
         }
-    } else {
-        book.style.display = ''
+
     }
-   
-    })
-    
 })
-
-// Add Listner to add Button
-addBtn.addEventListener("click", addFunction);
-
-
-//  add listner for delete item
-function deleteItem(e){
-    var pro = confirm("are you really want to delete this book?");
-    if(pro){
-    const parents = e.target.parentElement;
-    parents.parentNode.removeChild(parents);
-    } 
-}
-
-// add listner add new item
-function addFunction() {
-    if (inputAdd.value != "" && inputAdd.value.length >= 3) {
-
-        var newLi = document.createElement("li");
-        var spanName = document.createElement("span");
-        spanName.classList.add("name");
-        spanName.textContent = inputAdd.value;
-        var spanDelete = document.createElement("span")
-        spanDelete.classList.add("delete");
-        spanDelete.textContent = "Удалить"
-       
-        //Add name Sapan
-        newLi.appendChild(spanName);
-        newLi.appendChild(spanDelete);
-
-        document.querySelector("ul").appendChild(newLi);
-        inputAdd.value = ""
-}
-}
-
-
-
 
